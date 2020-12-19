@@ -1,34 +1,58 @@
+# PicPay Software Engineer Challenge
+
 ![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
 
-# Teste Backend
+A aplicação expõe endpoints para buscar usuários por seu nome ou nome de usuário. 
+Alguns usuários tem mais prioridade que outros, para definir quem são eles levamos em consideração duas "listas de relevancia" nas quais nos baseamos para ordenar o resultado da busca.
 
-O desafio é criar uma API REST que busca usuarios pelo nome e username a partir de uma palavra chave. Faça o download do arquivo [users.csv.gz](https://s3.amazonaws.com/careers-picpay/users.csv.gz) que contém o banco de dados que deve ser usado na busca. Ele contém os IDs, nomes e usernames dos usuários.
+### ✅ Pré-requisitos
 
-###### Exemplo
-| ID                                   | Nome              | Username             |
-|--------------------------------------|-------------------|----------------------|
-| 065d8403-8a8f-484d-b602-9138ff7dedcf | Wadson marcia     | wadson.marcia        |
-| 5761be9e-3e27-4be8-87bc-5455db08408  | Kylton Saura      | kylton.saura         |
-| ef735189-105d-4784-8e2d-c8abb07e72d3 | Edmundo Cassemiro | edmundo.cassemiro    |
-| aaa40f4e-da26-42ee-b707-cb81e00610d5 | Raimundira M      | raimundiram          |
-| 51ba0961-8d5b-47be-bcb4-54633a567a99 | Pricila Kilder    | pricilakilderitaliani|
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/),[Docker](https://www.docker.com/),[GNU Make](https://www.gnu.org/software/make/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
+### 🛠 Tecnologias
 
+As seguintes ferramentas foram usadas na construção do projeto:
 
-Também são fornecidas duas listas de usuários que devem ser utilizadas para priorizar os resultados da busca. A lista 1 tem mais prioridade que a lista 2. Ou seja, se dois usuarios casam com os criterios de busca, aquele que está na lista 1 deverá ser exibido primeiro em relação àquele que está na lista 2. Os que não estão em nenhuma das listas são exibidos em seguida.
+- [Node.js](https://nodejs.org/en/)
+- [Docker](https://www.docker.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [TypeOrm](https://typeorm.io/#/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-As listas podem ser encontradas na raiz deste repositório ([lista_relevancia_1.txt](lista_relevancia_1.txt) e [lista_relevancia_2.txt](lista_relevancia_2.txt)).
-Os resultados devem ser retornados paginados de 15 em 15 registros.
+### 🎲 Rodando o Back End (servidor)
 
-Utilize ***Docker*** e escolha as tecnologias que você vai usar e tente montar uma solução completa para rodar a aplicação.
+```bash
+# Clone este repositório
+$ git clone <https://github.com/Puccinellirpr/software-engineer-challenge>
 
-Faça um ***Fork*** deste repositório e abra um ***Pull Request***, **com seu nome na descrição**, para participar. 
+# Vá até a pasta do projeto
+$ cd software-engineer-challenge
+# Inicie a aplicação com o make
+$ make up
 
------
+# O servidor inciará na porta:3330 - acesse <http://localhost:3330>
+```
 
-### Diferenciais
+O script (`make up`) fará o download dos banco de dados de usuários de uma url externa, logo após isso o arquivo será extraido e o csv de usuários será importado para o banco de dados da aplicação;
+Esse processo de importação pode demorar de 3 a 5 minutos, portanto seja paciente nessa parte. 
 
-- Criar uma solução de autenticação entre o frontend e o backend;
-- Ter um desempenho elevado num conjunto de dados muito grande;
-- Criar testes automatizados;
-- Seja Cloud native;
+Depois desse processo a aplicação será iniciada na porta 3330.
+
+Todos os endpoints estão documentados através do [Swagger](https://swagger.io), que estará disponível na url:
+`
+    http://localhost:3330/swagger
+`
+ 
+ ### Authors
+
+<a href="https://github.com/puccinellirpr">
+ <img style="border-radius: 50%;" src="https://avatars0.githubusercontent.com/u/38588353?s=460&v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Reginaldo Puccinelli</b></sub></a> <a href="https://github.com/puccinellirpr" title="Rocket" >🚀</a>
+
+Feito com 💚 por Reginaldo Puccinelli
+
+[![Linkedin Badge](https://img.shields.io/badge/-Reginaldo%20Puccinelli-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/reginaldopuccinelli/)](https://www.linkedin.com/in/reginaldopuccinelli/)
+[![Gmail Badge](https://img.shields.io/badge/-puccinellirpr@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:puccinellirpr@gmail.com)](mailto:puccinellirpr@gmail.com)
