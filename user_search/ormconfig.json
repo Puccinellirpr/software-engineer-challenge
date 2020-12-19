@@ -1,0 +1,12 @@
+{
+    "type": "postgres",
+    "host": "db",
+    "port": 5432,
+    "username": "docker",
+    "password": "hire-me-p1cp@y",
+    "database": "docker",
+    "synchronize": false,
+    "entities": [
+       "src/entities/*.entity.ts"
+    ]
+ }
