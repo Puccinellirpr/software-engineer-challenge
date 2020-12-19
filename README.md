@@ -2,7 +2,7 @@
 
 ![PicPay](https://user-images.githubusercontent.com/1765696/26998603-711fcf30-4d5c-11e7-9281-0d9eb20337ad.png)
 
-A aplicação expõe endpoints para buscar usuários por seu nome ou nome de usuário. 
+A solução expõe endpoints para buscar usuários por seu nome ou nome de usuário. 
 Alguns usuários tem mais prioridade que outros, para definir quem são eles levamos em consideração duas "listas de relevancia" nas quais nos baseamos para ordenar o resultado da busca.
 
 ### ✅ Pré-requisitos
@@ -23,24 +23,36 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ### 🎲 Rodando o Back End (servidor)
 
-```bash
-# Clone este repositório
-$ git clone <https://github.com/Puccinellirpr/software-engineer-challenge>
+#### Arquitetura da solução
 
-# Vá até a pasta do projeto
-$ cd software-engineer-challenge
-# Inicie a aplicação com o make
+![Architecture](architecture.png)
+
+Na nossa solução o make é responsável por realizar uma sequência de comandos com o docker e o docker-compose. No Makefile rodamos o container do banco de dados, a importação dos dados e a nossa aplicação principal.
+
+#### O que é o Make? 
+O make é um utilitário que compila automaticamente programas e bibliotecas do arquivo fonte através da leitura de instruções contidas em arquivos denominados Makefiles, que descrevem as instruções de como obter o programa de destino.
+
+Para nossa solução, são necessários os seguintes comandos: 
+
+```
 $ make up
-
-# O servidor inciará na porta:3330 - acesse <http://localhost:3330>
 ```
 
-O script (`make up`) fará o download dos banco de dados de usuários de uma url externa, logo após isso o arquivo será extraido e o csv de usuários será importado para o banco de dados da aplicação;
-Esse processo de importação pode demorar de 3 a 5 minutos, portanto seja paciente nessa parte. 
+O script (`make up`) inicia o container de banco de dados e logo após inicia o download dos "bancos de dados" de uma url externa. Quando finalizado o dowload os extrai na pasta /data, e inicia o processo de importação para o banco no nosso container. ( Esse processo demora de 3 a 5 minutos em média )
+Assim que os dados são importados no nosso banco o container da aplicação é iniciado e estará disponível no endereço:
+`
+    http://localhost:3330
+`
 
-Depois desse processo a aplicação será iniciada na porta 3330.
+```
+$ make down
+```
 
-Todos os endpoints estão documentados através do [Swagger](https://swagger.io), que estará disponível na url:
+O comando (`make down`) encerra os nossos containers.
+
+### 📚 Documentação
+
+Todos os endpoints estão documentados através do [Swagger](https://swagger.io) e estará disponível na url:
 `
     http://localhost:3330/swagger
 `
@@ -50,7 +62,7 @@ Todos os endpoints estão documentados através do [Swagger](https://swagger.io)
 <a href="https://github.com/puccinellirpr">
  <img style="border-radius: 50%;" src="https://avatars0.githubusercontent.com/u/38588353?s=460&v=4" width="100px;" alt=""/>
  <br />
- <sub><b>Reginaldo Puccinelli</b></sub></a> <a href="https://github.com/puccinellirpr" title="Rocket" >🚀</a>
+ <sub><b>Reginaldo Puccinelli</b></sub></a> <a href="https://github.com/puccinellirpr" title="Rocket" > 🚀</a>
 
 Feito com 💚 por Reginaldo Puccinelli
 
