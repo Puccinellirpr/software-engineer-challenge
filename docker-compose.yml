@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  user_search:
+    container_name: user_search
+    restart: always
+    build: ./user_search
+    ports: 
+      - "3330:3330"
+  db:
+    container_name: db
+    image: postgres:13
+    restart: always
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: hire-me-p1cp@y
+      POSTGRES_DB: docker
+    volumes:
+      - ./data:/opt/data
